@@ -36,11 +36,13 @@ class Header extends Component {
         <div className="nav-wrapper">
           <div className="col s12">
             <Link
-              to={this.props.auth ? '/dashboard' : '/'}
+              to={this.props.auth ? '/surveys' : '/'}
               className="brand-logo"
+              style={{ margin: '0 10px' }}
             >
-              Emaily
+              IlyasMail
             </Link>
+
             <ul className="right">{this.renderContent()}</ul>
           </div>
         </div>

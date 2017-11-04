@@ -1,12 +1,14 @@
 import 'materialize-css/dist/css/materialize.min.css';
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 import Header from './Header.js';
 import Landing from './Landing';
-const Dashbord = () => <h2>Dashbord</h2>;
+import Dashboard from './Dashboard';
+import SurveyNew from './surveys/SurveyNew';
+import NotFound from './NotFound';
 
 class App extends React.Component {
   componentDidMount() {
@@ -17,10 +19,14 @@ class App extends React.Component {
     return (
       <div className="container">
         <BrowserRouter>
-          <div>
+          <div className="container">
             <Header />
-            <Route exact={true} path="/" component={Landing} />
-            <Route exact path="/dashboard" component={Dashbord} />
+            <Switch>
+              <Route exact path="/" component={Landing} />
+              <Route exact path="/surveys" component={Dashboard} />
+              <Route path="/surveys/new" component={SurveyNew} />
+              <Route path="/*" component={NotFound} />
+            </Switch>
           </div>
         </BrowserRouter>
       </div>
